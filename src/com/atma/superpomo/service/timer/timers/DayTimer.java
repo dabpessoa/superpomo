@@ -1,12 +1,12 @@
-package com.atma.superpomo.service.timers;
+package com.atma.superpomo.service.timer.timers;
 
 import com.atma.superpomo.model.enums.TimerType;
-import com.atma.superpomo.service.PomoTimerTask;
+import com.atma.superpomo.service.timer.TimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
  */
-public class DayTimer  extends PomoTimer {
+public class DayTimer  extends Timer {
 
     public static final int DAY_MILLIS = 1000*60*60*24;
 
@@ -23,7 +23,7 @@ public class DayTimer  extends PomoTimer {
     }
 
     @Override
-    public void start(PomoTimerTask task) {
+    public void start(TimerTask task) {
         getTimer().schedule(task, getMilliSecondsDelay(), DAY_MILLIS);
     }
 

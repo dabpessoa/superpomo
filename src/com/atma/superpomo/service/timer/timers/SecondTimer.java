@@ -1,33 +1,33 @@
-package com.atma.superpomo.service.timers;
+package com.atma.superpomo.service.timer.timers;
 
 import com.atma.superpomo.model.enums.TimerType;
-import com.atma.superpomo.service.PomoTimerTask;
+import com.atma.superpomo.service.timer.TimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
  */
-public class SecondPomoTimer extends PomoTimer {
+public class SecondTimer extends Timer {
 
     public static final int SECOND_MILLIS = 1000;
 
-    public SecondPomoTimer() {
+    public SecondTimer() {
         this(true);
     }
 
-    public SecondPomoTimer(boolean daemon) {
+    public SecondTimer(boolean daemon) {
         super(daemon);
     }
 
-    public SecondPomoTimer(String name, boolean isDaemon) {
+    public SecondTimer(String name, boolean isDaemon) {
         super(name, isDaemon);
     }
 
-    public SecondPomoTimer(String name, long milliSecondsDelay, boolean isDaemon) {
+    public SecondTimer(String name, long milliSecondsDelay, boolean isDaemon) {
         super(name, milliSecondsDelay, isDaemon);
     }
 
     @Override
-    public void start(PomoTimerTask task) {
+    public void start(TimerTask task) {
         getTimer().schedule(task, getMilliSecondsDelay(), SECOND_MILLIS);
     }
 

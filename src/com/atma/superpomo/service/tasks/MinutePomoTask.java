@@ -1,20 +1,19 @@
 package com.atma.superpomo.service.tasks;
 
-import com.atma.superpomo.service.PomoTimerTask;
-import com.atma.superpomo.service.PomoTimerTaskListener;
-import com.atma.superpomo.service.timers.MinutePomoTimer;
-import com.atma.superpomo.service.timers.SecondPomoTimer;
+import com.atma.superpomo.service.timer.TimerTask;
+import com.atma.superpomo.service.timer.TimerTaskListener;
+import com.atma.superpomo.service.timer.timers.MinuteTimer;
 
 /**
  * Created by diego.pessoa on 26/01/2017.
  */
-public class MinutePomoTask extends PomoTimerTask implements PomoTimerTaskListener {
+public class MinutePomoTask extends TimerTask implements TimerTaskListener {
 
-    private MinutePomoTimer minutePomoTimer;
+    private MinuteTimer minutePomoTimer;
 
     public MinutePomoTask() {
         addPomoTimerTaskListener(this);
-        minutePomoTimer = new MinutePomoTimer(false);
+        minutePomoTimer = new MinuteTimer(false);
     }
 
     public void start() {
@@ -27,7 +26,7 @@ public class MinutePomoTask extends PomoTimerTask implements PomoTimerTaskListen
     }
 
     @Override
-    public void taskExecuted(PomoTimerTask pomoTimerTask) {
+    public void taskExecuted(TimerTask pomoTimerTask) {
         System.out.println("MINUTE task executed!");
     }
 }

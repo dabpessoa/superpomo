@@ -1,22 +1,21 @@
-package com.atma.superpomo.service;
+package com.atma.superpomo.service.timer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
  */
-public abstract class PomoTimerTask extends TimerTask {
+public abstract class TimerTask extends java.util.TimerTask {
 
     private String name;
-    private List<PomoTimerTaskListener> pomoTimerTaskListeners;
+    private List<TimerTaskListener> pomoTimerTaskListeners;
 
-    public PomoTimerTask() {
+    public TimerTask() {
         this(null);
     }
 
-    public PomoTimerTask(String name) {
+    public TimerTask(String name) {
         this.name = name;
         this.pomoTimerTaskListeners = new ArrayList<>();
     }
@@ -29,14 +28,14 @@ public abstract class PomoTimerTask extends TimerTask {
         updatePomoTimerTaskListeners();
     }
 
-    public void addPomoTimerTaskListener(PomoTimerTaskListener pomoTimerListener) {
+    public void addPomoTimerTaskListener(TimerTaskListener pomoTimerListener) {
         if (!pomoTimerTaskListeners.contains(pomoTimerListener)) {
             this.pomoTimerTaskListeners.add(pomoTimerListener);
         }
     }
 
     public void updatePomoTimerTaskListeners() {
-        for (PomoTimerTaskListener updateTimeListener : pomoTimerTaskListeners) {
+        for (TimerTaskListener updateTimeListener : pomoTimerTaskListeners) {
             updateTimeListener.taskExecuted(this);
         }
     }

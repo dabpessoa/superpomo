@@ -1,19 +1,22 @@
 package com.atma.superpomo.service.tasks;
 
-import com.atma.superpomo.service.PomoTimerTask;
-import com.atma.superpomo.service.PomoTimerTaskListener;
-import com.atma.superpomo.service.timers.SecondPomoTimer;
+import com.atma.superpomo.model.Pomodoro;
+import com.atma.superpomo.model.enums.TimerType;
+import com.atma.superpomo.service.timer.TimerTask;
+import com.atma.superpomo.service.timer.TimerTaskListener;
+import com.atma.superpomo.service.timer.timers.SecondTimer;
 
 /**
  * Created by diego.pessoa on 26/01/2017.
  */
-public class SecondPomoTask extends PomoTimerTask implements PomoTimerTaskListener {
+public class SecondPomoTask extends TimerTask {
 
-    private SecondPomoTimer secondPomoTimer;
+    private SecondTimer secondPomoTimer;
+    private Pomodoro pomodoro;
 
-    public SecondPomoTask() {
-        addPomoTimerTaskListener(this);
-        secondPomoTimer = new SecondPomoTimer(false);
+    public SecondPomoTask(Pomodoro pomodoro) {
+        this.pomodoro = pomodoro;
+        secondPomoTimer = new SecondTimer(false);
     }
 
     public void start() {
@@ -22,12 +25,9 @@ public class SecondPomoTask extends PomoTimerTask implements PomoTimerTaskListen
 
     @Override
     public void doJob() {
-        System.out.println("SECOND task executando...");
-    }
-
-    @Override
-    public void taskExecuted(PomoTimerTask pomoTimerTask) {
-        System.out.println("SECOND task executed!");
+        if (!pomodoro.isFinished()) {
+            pomodoro.updateDurationTaskTime(secondPomoTimer.getTimerType(), -1);
+        }
     }
 
 }
