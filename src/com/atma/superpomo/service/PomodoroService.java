@@ -25,13 +25,6 @@ public class PomodoroService implements UpdateTimeListener {
         SecondTimer st = new SecondTimer();
         st.start(task);
 
-
-        git init
-        git add README.md
-        git commit -m "first commit"
-        git remote add origin https://github.com/dabpessoa/superpomo.git
-        git push -u origin master
-
     }
 
     @Override

@@ -31,6 +31,6 @@ public class DayTimer  extends PomoTimer {
 
     @Override
     public TimerType getTimerType() {
-        return null
+        return TimerType.DAY;
     }
 }

@@ -1,5 +1,6 @@
 package com.atma.superpomo.service.timers;
 
+import com.atma.superpomo.model.TimerType;
 import com.atma.superpomo.service.PomoTimerTask;
 
 import java.util.TimerTask;
@@ -26,5 +27,10 @@ public class SecondTimer extends PomoTimer {
     @Override
     public void start(PomoTimerTask task) {
         getTimer().schedule(task, getMilliSecondsDelay(), SECOND_MILLIS);
+    }
+
+    @Override
+    public TimerType getTimerType() {
+        return TimerType.SECOND;
     }
 }

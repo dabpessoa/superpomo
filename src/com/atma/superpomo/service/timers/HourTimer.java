@@ -1,5 +1,6 @@
 package com.atma.superpomo.service.timers;
 
+import com.atma.superpomo.model.TimerType;
 import com.atma.superpomo.service.PomoTimerTask;
 
 import java.util.TimerTask;
@@ -28,4 +29,8 @@ public class HourTimer extends PomoTimer {
         getTimer().schedule(task, getMilliSecondsDelay(), HOUR_MILLIS);
     }
 
+    @Override
+    public TimerType getTimerType() {
+        return TimerType.HOUR;
+    }
 }
