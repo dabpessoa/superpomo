@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="corFundo" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button layoutX="75.0" layoutY="115.0" mnemonicParsing="false" onAction="#clicou" text="Entrar" />
+      <TextField fx:id="textField" layoutX="26.0" layoutY="83.0" />
+      <Label layoutX="34.0" layoutY="60.0" text="Login" />
+      <Label fx:id="fillLabel" layoutX="61.0" layoutY="27.0" />
+   </children>
+</AnchorPane>
