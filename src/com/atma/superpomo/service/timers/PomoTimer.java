@@ -1,10 +1,8 @@
 package com.atma.superpomo.service.timers;
 
-import com.atma.superpomo.model.TimerType;
+import com.atma.superpomo.model.enums.TimerType;
 import com.atma.superpomo.service.PomoTimerTask;
-
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
@@ -17,7 +15,11 @@ public abstract class PomoTimer {
     private boolean daemon;
 
     public PomoTimer() {
-        this(null, false);
+        this(null, true);
+    }
+
+    public PomoTimer(boolean daemon) {
+        this(null, daemon);
     }
 
     public PomoTimer(String name, boolean daemon) {
@@ -48,6 +50,10 @@ public abstract class PomoTimer {
 
     public boolean isDaemon() {
         return daemon;
+    }
+
+    public void stop() {
+        getTimer().cancel();
     }
 
 }

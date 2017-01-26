@@ -1,7 +1,5 @@
 package com.atma.superpomo.service;
 
-import com.atma.superpomo.service.timers.PomoTimer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -11,15 +9,16 @@ import java.util.TimerTask;
  */
 public abstract class PomoTimerTask extends TimerTask {
 
-    private PomoTimer pomoTimer;
-    private List<UpdateTimeListener> updateTimeListeners;
-
-    public PomoTimerTask(PomoTimer pomoTimer) {
-        this.pomoTimer = pomoTimer;
-    }
+    private String name;
+    private List<PomoTimerTaskListener> pomoTimerTaskListeners;
 
     public PomoTimerTask() {
-        this.updateTimeListeners = new ArrayList<>();
+        this(null);
+    }
+
+    public PomoTimerTask(String name) {
+        this.name = name;
+        this.pomoTimerTaskListeners = new ArrayList<>();
     }
 
     public abstract void doJob();
@@ -27,17 +26,27 @@ public abstract class PomoTimerTask extends TimerTask {
     @Override
     public void run() {
         doJob();
-        updateTimeListeners();
+        updatePomoTimerTaskListeners();
     }
 
-    public void addTimeListener(UpdateTimeListener updateTimeListener) {
-        this.updateTimeListeners.add(updateTimeListener);
-    }
-
-    public void updateTimeListeners() {
-        for (UpdateTimeListener updateTimeListener : updateTimeListeners) {
-            updateTimeListener.updateTime(pomoTimer);
+    public void addPomoTimerTaskListener(PomoTimerTaskListener pomoTimerListener) {
+        if (!pomoTimerTaskListeners.contains(pomoTimerListener)) {
+            this.pomoTimerTaskListeners.add(pomoTimerListener);
         }
+    }
+
+    public void updatePomoTimerTaskListeners() {
+        for (PomoTimerTaskListener updateTimeListener : pomoTimerTaskListeners) {
+            updateTimeListener.taskExecuted(this);
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

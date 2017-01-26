@@ -1,26 +1,28 @@
 package com.atma.superpomo.service.timers;
 
-import com.atma.superpomo.model.TimerType;
+import com.atma.superpomo.model.enums.TimerType;
 import com.atma.superpomo.service.PomoTimerTask;
-
-import java.util.TimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
  */
-public class MinuteTimer extends PomoTimer {
+public class MinutePomoTimer extends PomoTimer {
 
     public static final int MINUTE_MILLIS = 1000*60;
 
-    public MinuteTimer() {
+    public MinutePomoTimer() {
         super();
     }
 
-    public MinuteTimer(String name, boolean isDaemon) {
+    public MinutePomoTimer(boolean daemon) {
+        super(daemon);
+    }
+
+    public MinutePomoTimer(String name, boolean isDaemon) {
         super(name, isDaemon);
     }
 
-    public MinuteTimer(String name, long milliSecondsDelay, boolean isDaemon) {
+    public MinutePomoTimer(String name, long milliSecondsDelay, boolean isDaemon) {
         super(name, milliSecondsDelay, isDaemon);
     }
 
