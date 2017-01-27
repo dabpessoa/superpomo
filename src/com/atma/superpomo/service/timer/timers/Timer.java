@@ -1,7 +1,7 @@
 package com.atma.superpomo.service.timer.timers;
 
 import com.atma.superpomo.model.enums.TimerType;
-import com.atma.superpomo.service.timer.TimerTask;
+import com.atma.superpomo.service.timer.PomoTimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
@@ -32,7 +32,7 @@ public abstract class Timer {
         this.timer = name != null ? new java.util.Timer(name, daemon) : new java.util.Timer(daemon);
     }
 
-    public abstract void start(TimerTask task);
+    public abstract void start(PomoTimerTask task);
     public abstract TimerType getTimerType();
 
     public java.util.Timer getTimer() {

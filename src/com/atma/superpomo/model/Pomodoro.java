@@ -26,18 +26,18 @@ public class Pomodoro {
         return DateUtils.isZeroTime(getPomoClock());
     }
 
-    public void updateDurationTaskTime(TimerType timerType, int amount) {
+    public void updatePomoClockTime(TimerType timerType, int amount) {
         switch (timerType) {
             case SECOND: {
-                setDurationTaskTime(DateUtils.addSecond(getPomoClock(), amount));
+                setPomoClock(DateUtils.addSecond(getPomoClock(), amount));
                 break;
             }
             case MINUTE: {
-                setDurationTaskTime(DateUtils.addMinute(getPomoClock(), amount));
+                setPomoClock(DateUtils.addMinute(getPomoClock(), amount));
                 break;
             }
             case HOUR: {
-                setDurationTaskTime(DateUtils.addHour(getPomoClock(), amount));
+                setPomoClock(DateUtils.addHour(getPomoClock(), amount));
                 break;
             }
         }

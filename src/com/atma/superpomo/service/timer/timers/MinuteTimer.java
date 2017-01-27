@@ -1,7 +1,7 @@
 package com.atma.superpomo.service.timer.timers;
 
 import com.atma.superpomo.model.enums.TimerType;
-import com.atma.superpomo.service.timer.TimerTask;
+import com.atma.superpomo.service.timer.PomoTimerTask;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
@@ -27,7 +27,7 @@ public class MinuteTimer extends Timer {
     }
 
     @Override
-    public void start(TimerTask task) {
+    public void start(PomoTimerTask task) {
         getTimer().schedule(task, getMilliSecondsDelay(), MINUTE_MILLIS);
     }
 
