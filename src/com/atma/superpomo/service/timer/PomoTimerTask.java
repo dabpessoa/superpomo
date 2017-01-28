@@ -14,6 +14,7 @@ public abstract class PomoTimerTask extends TimerTask {
 
     private String taskName;
     private Pomodoro pomodoro;
+    private PomoTimer pomoTimer;
     private List<PomoTimerTaskListener> pomoTimerTaskListeners;
 
     public PomoTimerTask() {
@@ -61,6 +62,14 @@ public abstract class PomoTimerTask extends TimerTask {
 
     public Pomodoro getPomodoro() {
         return pomodoro;
+    }
+
+    public void setPomoTimer(PomoTimer pomoTimer) {
+        this.pomoTimer = pomoTimer;
+    }
+
+    public PomoTimer getPomoTimer() {
+        return pomoTimer;
     }
 
 }

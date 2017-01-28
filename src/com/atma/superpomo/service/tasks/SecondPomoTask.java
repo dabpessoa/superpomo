@@ -14,11 +14,12 @@ public class SecondPomoTask extends PomoTimerTask {
     public SecondPomoTask(Pomodoro pomodoro) {
         super(pomodoro);
         secondPomoTimer = new SecondTimer(false);
+        setPomoTimer(secondPomoTimer);
     }
 
     @Override
     public void start() {
-        secondPomoTimer.start(this);
+        getPomoTimer().start(this);
     }
 
     @Override
