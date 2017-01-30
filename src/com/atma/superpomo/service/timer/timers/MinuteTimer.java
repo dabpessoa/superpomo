@@ -2,11 +2,12 @@ package com.atma.superpomo.service.timer.timers;
 
 import com.atma.superpomo.model.enums.TimerType;
 import com.atma.superpomo.service.timer.PomoTimerTask;
+import com.atma.superpomo.service.timer.PomoTimer;
 
 /**
  * Created by diego.pessoa on 25/01/2017.
  */
-public class MinuteTimer extends Timer {
+public class MinuteTimer extends PomoTimer {
 
     public static final int MINUTE_MILLIS = 1000*60;
 
