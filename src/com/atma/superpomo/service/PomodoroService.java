@@ -20,13 +20,13 @@ public class PomodoroService implements PomoTimerTaskListener {
         Pomodoro p = new Pomodoro();
         p.setPomoClock(new Date());
 
-//        SecondPomoTask st = new SecondPomoTask(p);
-//        st.addPomoTimerTaskListener(new PomodoroService());
+        SecondPomoTask st = new SecondPomoTask(p);
+        st.addPomoTimerTaskListener(new PomodoroService());
 
         MinutePomoTask mt = new MinutePomoTask(p);
         mt.addPomoTimerTaskListener(new PomodoroService());
 
-//        st.start();
+        st.start();
         mt.start();
 
     }
