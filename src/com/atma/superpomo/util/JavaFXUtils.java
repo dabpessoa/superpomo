@@ -13,10 +13,10 @@ import java.net.URL;
  */
 public class JavaFXUtils {
 
-    public static void startStage(Stage primaryStage, String fxmlsPath) throws IOException {
+    public static void startStage(String stageTitle, Stage primaryStage, String fxmlsPath) throws IOException {
         URL location = ClassUtils.getDefaultClassLoader(JavaFXUtils.class).getResource(fxmlsPath);
         Parent root = FXMLLoader.load(location);
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle(stageTitle);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
