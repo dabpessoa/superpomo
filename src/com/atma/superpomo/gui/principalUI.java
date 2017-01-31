@@ -16,13 +16,6 @@ import java.net.URL;
  */
 public class PrincipalUI extends Application {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Application.launch(PrincipalUI.class, (java.lang.String[])null);
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         JavaFXUtils.startStage("Hello World", primaryStage, "fxmls/principalUI.fxml");

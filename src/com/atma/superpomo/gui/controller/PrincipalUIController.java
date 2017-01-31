@@ -35,17 +35,21 @@ public class PrincipalUIController implements PomoTimerTaskListener {
 
     private SecondPomoTask secondPomoTask;
 
-    public PrincipalUIController() {
+    public PrincipalUIController() {}
+
+    public void startPomodoro(ActionEvent event) {
+        Platform.runLater(()->{
+            if (secondPomoTask != null) secondPomoTask.cancel();
+            initPomoTask();
+            secondPomoTask.start();
+        });
+    }
+
+    public void initPomoTask() {
         Pomodoro pomodoro = new Pomodoro();
         pomodoro.setPomoClock(new Date());
         secondPomoTask = new SecondPomoTask(pomodoro);
         secondPomoTask.addPomoTimerTaskListener(this);
-    }
-
-    public void startPomodoro(ActionEvent event) {
-        Platform.runLater(()->{
-            secondPomoTask.start();
-        });
     }
 
     @Override

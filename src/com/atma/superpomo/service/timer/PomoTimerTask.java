@@ -15,6 +15,7 @@ public abstract class PomoTimerTask extends TimerTask {
     private Pomodoro pomodoro;
     private PomoTimer pomoTimer;
     private List<PomoTimerTaskListener> pomoTimerTaskListeners;
+    private Runnable runnable;
     private boolean running;
 
     public PomoTimerTask() {
@@ -39,11 +40,22 @@ public abstract class PomoTimerTask extends TimerTask {
     public void run() {
         try {
             running = true;
-            doJob();
+            if (getRunnable() != null) {
+                getRunnable().run();
+            } else {
+                doJob();
+            }
             updatePomoTimerTaskListeners();
         } finally {
             running = false;
         }
+    }
+
+    @Override
+    public boolean cancel() {
+        boolean cancelBoolean = super.cancel();
+        running = false;
+        return cancelBoolean;
     }
 
     public void addPomoTimerTaskListener(PomoTimerTaskListener pomoTimerListener) {
@@ -81,4 +93,13 @@ public abstract class PomoTimerTask extends TimerTask {
     public boolean isRunning() {
         return running;
     }
+
+    public Runnable getRunnable() {
+        return runnable;
+    }
+
+    public void setRunnable(Runnable runnable) {
+        this.runnable = runnable;
+    }
+
 }
