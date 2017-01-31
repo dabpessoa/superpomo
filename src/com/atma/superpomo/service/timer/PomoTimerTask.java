@@ -4,7 +4,6 @@ import com.atma.superpomo.model.Pomodoro;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 import java.util.TimerTask;
 
 /**
@@ -16,6 +15,7 @@ public abstract class PomoTimerTask extends TimerTask {
     private Pomodoro pomodoro;
     private PomoTimer pomoTimer;
     private List<PomoTimerTaskListener> pomoTimerTaskListeners;
+    private boolean running;
 
     public PomoTimerTask() {
         this(null);
@@ -26,6 +26,7 @@ public abstract class PomoTimerTask extends TimerTask {
     }
 
     public PomoTimerTask(Pomodoro pomodoro, String taskName) {
+        this.running = false;
         this.taskName = taskName;
         this.pomodoro = pomodoro;
         this.pomoTimerTaskListeners = new ArrayList<>();
@@ -36,8 +37,13 @@ public abstract class PomoTimerTask extends TimerTask {
 
     @Override
     public void run() {
-        doJob();
-        updatePomoTimerTaskListeners();
+        try {
+            running = true;
+            doJob();
+            updatePomoTimerTaskListeners();
+        } finally {
+            running = false;
+        }
     }
 
     public void addPomoTimerTaskListener(PomoTimerTaskListener pomoTimerListener) {
@@ -72,4 +78,7 @@ public abstract class PomoTimerTask extends TimerTask {
         return pomoTimer;
     }
 
+    public boolean isRunning() {
+        return running;
+    }
 }
