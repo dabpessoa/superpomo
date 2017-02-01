@@ -58,8 +58,8 @@ public class ClassUtils {
             for (int j = 0; j < cols; j++)
             {
                 sprites[(i * cols) + j] = image.getSubimage(
-                        j * width + (j == 0 ? initialOffsetX : 0),
-                        i * height + (i == 0 ? initialOffsetY : 0),
+                        (j * width) + initialOffsetX,
+                        (i * height) + initialOffsetY,
                         width,
                         height
                 );
@@ -70,7 +70,7 @@ public class ClassUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        BufferedImage[] sprites = splitImage(getResourceImage("images/ledsign_colors.png"), 3, 3, 38, 38, 10, 10);
+        BufferedImage[] sprites = splitImage(getResourceImage("images/ledsign_colors.png"), 10, 10, 21, 21, 17, 15);
 
         JFrame frame = new JFrame();
         frame.getContentPane().setLayout(new FlowLayout());
