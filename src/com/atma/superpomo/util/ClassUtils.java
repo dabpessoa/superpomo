@@ -1,6 +1,7 @@
 package com.atma.superpomo.util;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -46,6 +47,45 @@ public class ClassUtils {
 
     public static BufferedImage getResourceImage(String resourcePath) throws IOException {
         return ImageIO.read(getResourceStream(resourcePath));
+    }
+
+    public static BufferedImage[] splitImage(BufferedImage image, int rows, int cols, int width, int height, int initialOffsetX, int initialOffsetY) {
+
+        BufferedImage[] sprites = new BufferedImage[rows * cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                sprites[(i * cols) + j] = image.getSubimage(
+                        j * width + (j == 0 ? initialOffsetX : 0),
+                        i * height + (i == 0 ? initialOffsetY : 0),
+                        width,
+                        height
+                );
+            }
+        }
+
+        return sprites;
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedImage[] sprites = splitImage(getResourceImage("images/ledsign_colors.png"), 3, 3, 38, 38, 10, 10);
+
+        JFrame frame = new JFrame();
+        frame.getContentPane().setLayout(new FlowLayout());
+        frame.setSize(500, 500);
+
+        for (BufferedImage sprite : sprites) {
+            System.out.println("Sprite: "+sprite);
+            JLabel label = new JLabel(new ImageIcon(sprite));
+            label.setOpaque(true);
+            label.setBackground(Color.BLACK);
+            frame.getContentPane().add(label);
+        }
+
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
 }
