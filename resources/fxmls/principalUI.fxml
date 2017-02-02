@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atma.superpomo.gui.controller.PrincipalUIController">
+   <children>
+      <Label layoutX="98.0" layoutY="58.0" prefHeight="17.0" prefWidth="47.0" text="Tempo:" />
+      <Label id="timeLabelId" fx:id="fillLabel" layoutX="145.0" layoutY="58.0" prefHeight="17.0" prefWidth="155.0" />
+      <Button fx:id="startButton" layoutX="96.0" layoutY="14.0" mnemonicParsing="false" onAction="#startPomodoro" text="start" />
+   </children>
+</AnchorPane>
