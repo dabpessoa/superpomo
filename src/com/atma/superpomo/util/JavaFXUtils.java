@@ -16,7 +16,7 @@ import java.net.URL;
  */
 public class JavaFXUtils {
 
-    public static void startStage(String stageTitle, Stage primaryStage, String fxmlsPath) throws IOException {
+    public static void initStage(String stageTitle, Stage primaryStage, String fxmlsPath) throws IOException {
         URL location = ClassUtils.getDefaultClassLoader(JavaFXUtils.class).getResource(fxmlsPath);
         Parent root = FXMLLoader.load(location);
         primaryStage.setTitle(stageTitle);
@@ -29,8 +29,6 @@ public class JavaFXUtils {
                 System.exit(0);
             }
         });
-
-        primaryStage.show();
     }
 
 }

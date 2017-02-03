@@ -14,6 +14,7 @@ public class Pomodoro {
     private Date intervalTime;
     private Date bigIntervalTime;
     private Date pomoClock;
+    private boolean paused;
 
     private Integer taskSizeBeforeBigInterval;
 
@@ -41,6 +42,14 @@ public class Pomodoro {
                 break;
             }
         }
+    }
+
+    public void pause() {
+        setPaused(true);
+    }
+
+    public void resume() {
+        setPaused(false);
     }
 
     public Date getDurationTaskTime() {
@@ -97,6 +106,14 @@ public class Pomodoro {
 
     public void setPomoClock(Date pomoClock) {
         this.pomoClock = pomoClock;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
     }
 
 }

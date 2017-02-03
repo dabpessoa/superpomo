@@ -33,21 +33,46 @@ public class PrincipalUIController implements PomoTimerTaskListener {
     @FXML
     private Button startButton;
 
+    @FXML
+    private Button stopButton;
+
     private SecondPomoTask secondPomoTask;
 
     public PrincipalUIController() {}
 
     public void startPomodoro(ActionEvent event) {
+        if (secondPomoTask != null) secondPomoTask.cancel();
+        initPomoTask();
         Platform.runLater(()->{
-            if (secondPomoTask != null) secondPomoTask.cancel();
-            initPomoTask();
             secondPomoTask.start();
         });
     }
 
+    public void stopPomodoro(ActionEvent event) {
+        if (secondPomoTask != null) secondPomoTask.cancel();
+    }
+
+    public void pausePomodoro(ActionEvent event) {
+        if (secondPomoTask != null) {
+            secondPomoTask.cancel();
+            secondPomoTask.getPomodoro().pause();
+        }
+    }
+
     public void initPomoTask() {
-        Pomodoro pomodoro = new Pomodoro();
-        pomodoro.setPomoClock(new Date());
+        Pomodoro pomodoro = null;
+        if (secondPomoTask != null) {
+            if (secondPomoTask.getPomodoro() != null && secondPomoTask.getPomodoro().isPaused()) {
+                pomodoro = secondPomoTask.getPomodoro();
+                pomodoro.resume();
+            }
+        }
+
+        if (pomodoro == null) {
+            pomodoro = new Pomodoro();
+            pomodoro.setPomoClock(new Date());
+        }
+
         secondPomoTask = new SecondPomoTask(pomodoro);
         secondPomoTask.addPomoTimerTaskListener(this);
     }
