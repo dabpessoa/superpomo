@@ -69,25 +69,4 @@ public class ClassUtils {
         return sprites;
     }
 
-    public static void main(String[] args) throws Exception {
-        BufferedImage[] sprites = splitImage(getResourceImage("images/signs_green.png"), 13, 8, 21, 21, 0, 0);
-
-        JFrame frame = new JFrame();
-        frame.getContentPane().setLayout(new FlowLayout());
-        frame.setSize(500, 500);
-
-        for (BufferedImage sprite : sprites) {
-            sprite = sprite.getSubimage(0, 0, 13, 16);
-
-            System.out.println("Sprite: "+sprite);
-            JLabel label = new JLabel(new ImageIcon(sprite));
-            label.setOpaque(true);
-            label.setBackground(Color.BLACK);
-            frame.getContentPane().add(label);
-        }
-
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
 }
