@@ -2,7 +2,6 @@ package com.atma.superpomo.run;
 
 import com.atma.superpomo.gui.PrincipalUI;
 import javafx.application.Application;
-import javafx.application.Platform;
 
 /**
  * Created by diego.pessoa on 31/01/2017.
